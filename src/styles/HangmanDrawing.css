@@ -1,0 +1,30 @@
+.hangman-container {
+  position: relative;
+}
+.top-part {
+  height: 10px;
+  width: 200px;
+  background: #000;
+  margin-left: 120px;
+}
+.top-right-part {
+  position: absolute;
+  height: 50px;
+  width: 10px;
+  background: #000;
+  top: 0;
+  right: 0;
+}
+
+.vertical-long {
+  height: 400px;
+  width: 10px;
+  background: #000;
+  margin-left: 120px;
+}
+
+.bottom-part {
+  height: 10px;
+  width: 250px;
+  background: #000;
+}
