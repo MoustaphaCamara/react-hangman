@@ -1,4 +1,5 @@
 import React from "react";
+
 const KEYS = [
   "a",
   "b",
@@ -28,7 +29,19 @@ const KEYS = [
   "z",
 ];
 
-const Keyboard = () => {
+type KeyboardProps = {
+  activeLetters: string[];
+  inactiveLetters: string[];
+  addGuessedLetters: (letter: string) => void;
+  disabled?: boolean;
+};
+
+const Keyboard = ({
+  disabled = false,
+  activeLetters,
+  inactiveLetters,
+  addGuessedLetters,
+}: KeyboardProps) => {
   return (
     <div
       style={{
@@ -37,11 +50,23 @@ const Keyboard = () => {
         gap: ".5rem",
       }}
     >
-      {KEYS.map((key) => (
-        <button className="btn" key={key}>
-          {key}
-        </button>
-      ))}
+      {KEYS.map((key) => {
+        const isActive = activeLetters.includes(key);
+        const isInactive = inactiveLetters.includes(key);
+        return (
+          <button
+            onClick={() => addGuessedLetters(key)}
+            className={`btn
+            ${isActive ? "active" : ""}
+            ${isInactive ? "inactive" : ""}
+            `}
+            disabled={isActive || isInactive || disabled}
+            key={key}
+          >
+            {key}
+          </button>
+        );
+      })}
     </div>
   );
 };
